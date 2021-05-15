@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Example</title>
+  </head>
+  <body>
+    <h1>Hello from site</h1>
+    <h1 id="api"></h1>
+  </body>
+  <script>
+   function say(s) {
+    const el = document.querySelector('#api');
+    el.innerText = s
+   }
+
+   fetch('/.netlify/functions/hello')
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        say(`Problem calling function. Status Code: ${response.status}`)
+        return
+      }
+
+      // Examine the text in the response
+      response.text().then(function(text) {
+        say(text)
+      })
+    }
+  )
+  .catch(function(err) {
+    say(`Fetch Error: ${err}`)
+  })
+
+  </script>
+</html>

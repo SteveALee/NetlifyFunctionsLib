@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "tiny2",
+  "version": "1.0.0",
+  "description": "Replace all spaces in a string with +",
+  "repository": "",
+  "main": "index.js"
+}
