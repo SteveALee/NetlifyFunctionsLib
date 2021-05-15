@@ -2,6 +2,8 @@
 
 Example of sharing modules between @Netlify Functions.
 
+The example calls two function endpoints each of which call the same npm module and the same shared local module (ie not published to npm and not in node_modules).
+
 This is a no "user build setup" - ie just source JavaScript files no bundling etc.
 See netlify docs on [Unbundled Functions](https://docs.netlify.com/functions/build-with-javascript/#unbundled-javascript-function-deploys) for details..
 

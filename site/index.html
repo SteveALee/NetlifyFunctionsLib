@@ -5,30 +5,36 @@
   <body>
     <h1>Hello from site</h1>
     <h1 id="api"></h1>
+    <h1 id="api2"></h1>
   </body>
   <script>
-   function say(s) {
-    const el = document.querySelector('#api');
-    el.innerText = s
+   function say(sel, str) {
+    const el = document.querySelector(sel);
+    el.innerText = str
    }
 
-   fetch('/.netlify/functions/hello')
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        say(`Problem calling function. Status Code: ${response.status}`)
-        return
-      }
+   function callFunction(endpoint, sel) {
+    fetch(endpoint)
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          say(sel, `Problem calling function ${endpoint}". Status Code: ${response.status}`)
+          return
+        }
 
-      // Examine the text in the response
-      response.text().then(function(text) {
-        say(text)
-      })
-    }
-  )
-  .catch(function(err) {
-    say(`Fetch Error: ${err}`)
-  })
+        // Examine the text in the response
+        response.text().then(function(text) {
+          say(sel, text)
+        })
+      }
+    )
+    .catch(function(err) {
+      say(sel, `Fetch Error: ${err}`)
+    })
+  }
+
+  callFunction('/.netlify/functions/hello', '#api')
+  callFunction('/.netlify/functions/hello2', '#api2')
 
   </script>
 </html>
