@@ -15,3 +15,8 @@ It scans the source for `require` statements (and perhaps eventually, `imports`)
 
 To share local files between function we use the npm support for [local paths](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#local-paths).
 For these, npm install creates a symlink in node_modules to the module folder. Fortunately the Netlify spidering seems to be happy with symlinks.
+
+# To run
+
+Simply grab the files locally and `netlify deploy` using the [Netlify CLI](https://docs.netlify.com/cli/get-started/#app) or serve it locally 
+(again with the CLI) or set up CI from your clone of this repo.
